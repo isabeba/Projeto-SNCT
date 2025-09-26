@@ -1,57 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCNT</title>
+    <title>SNCT</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/256/13629/13629353.png?semt=ais_white_label" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+    /* reset básico */
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family: Arial, sans-serif;
+    }
+
     :root {
-        /* Variáveis de cor para facilitar a manutenção */
         --cor-oceano-escuro: rgba(6, 65, 101, 0.921);
         --cor-oceano-claro: rgb(37, 197, 251);
-        --cor-areia-base: rgba(255, 255, 255, 0.5);
-        --duracao-animacao: 15s;
-        --cor-primaria: #000000;
-        --cor-secundaria: #6c757d;
-        --cor-fundo: #f8f9fa;
         --cor-card: #ffffff;
-        --cor-texto-principal: #212529;
         --sombra-card: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .header {
-        position: fixed; /* Fixa o cabeçalho no topo */
-        top: 0;
-        left: 0;
         width: 100%;
         padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
-        z-index: 100; /* Garante que fique acima de outros elementos */
+        background-color: rgba(0, 0, 0, 0.5);
     }
-    .header h1 {
-        font-size: 1.5rem;
-        color: white;
-        margin: auto; 
-    }
-    .header nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 1rem;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
-    .header nav a:hover {
-        color: burlywood;
-    }
-
 
     .beach-background {
-        /* Use uma imagem como esta: */
         background-image: linear-gradient(to bottom, var(--cor-oceano-claro), var(--cor-oceano-escuro));
         background-size: cover;
         background-position: center;
@@ -65,73 +46,68 @@
     }
 
     .container {
-        max-width: 200px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem 1rem;
     }
-    .grid-layout {
+
+    /* Novo layout de cards */
+    .main-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: 2fr 1fr; /* esquerda maior, direita menor */
         gap: 2rem;
         margin-top: 5rem;
     }
 
-    .card {
+    .card-large, .card-small {
         background-color: var(--cor-card);
-        padding: 1.5rem;
         border-radius: 8px;
         box-shadow: var(--sombra-card);
+        padding: 1.5rem;
         transition: transform 0.3s ease;
     }
 
-    .card:hover {
+    .card-large:hover, .card-small:hover {
         transform: translateY(-5px);
     }
-        
 
-    .box-model-container {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    .box {
-        background-color: #e9ecef;
-        border: 2px dashed var(--cor-secundaria);
-        padding: 1rem;
-        width: 150px;
-        text-align: center;
-        border-radius: 4px;
-    }
-    .box.margin { margin: 1rem; }
-    .box.padding { padding: 2rem; }
-    .box.borda { border: 4px solid var(--cor-primaria); border-radius: 12px; }
-
-    .flex-exemplo {
+    .cards-right {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-    .flex-container {
+
+    /* Footer */
+    .footer {
+        width: 100%;
+        margin: 0;
+        padding: 1rem 2rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        border: 1px solid var(--cor-secundaria);
-        padding: 1rem;
-        border-radius: 4px;
-        }
-    .flex-item {
-        background-color: var(--cor-primaria);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        background-color: #f6f6f6;
     }
 
+    .footer img {
+        height: 70px;
+        display: block;
+    }
+
+    /* Responsivo */
     @media (max-width: 768px) {
-        .grid-layout {
+        .main-grid {
             grid-template-columns: 1fr;
         }
-    }
 
+        .cards-right {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .card-small {
+            flex: 1 1 45%;
+        }
+    }
     </style>
 </head>
 <body>
@@ -141,45 +117,51 @@
         AOS.init();
     </script>
 
-
     <header class="header">
-        <h1>22ª Semana Nacional de Ciência & Tecnologia: Planeta Água em Dados</h1>
+        <img src="Logo-e-ativos-SNCT-2025/Logo SNCT/Logo branca.png" alt="Logo SNCT" height="70px">
     </header>
 
     <main class="container">
-        <section class="grid-layout">
-            <div class="card">
-                <h1>Planeta Água em Dados</h1>
-                <p>Esse projeto tem como tema a central a Estação Meteorológica Escolar com Arduino.</p>
+        <section class="main-grid">
+            <!-- Card Grande -->
+            <div class="card-large">
+                <h1>Análise com arduino</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam rerum exercitationem consequuntur at. Quis possimus est modi qui perspiciatis perferendis similique, tempora ullam corporis labore quidem eius architecto cumque enim?
+                Reprehenderit est commodi magnam, deserunt consequuntur nulla enim reiciendis nesciunt ipsam necessitatibus delectus quis eveniet non dolor. Impedit consequatur esse non quisquam, inventore quis itaque, dolor, distinctio ipsam eligendi dolorem?
+                Minus fuga maiores rem esse maxime quia dolor est modi repellendus ullam, aut reiciendis quae dolorum obcaecati labore incidunt quaerat, earum illo expedita reprehenderit deserunt, alias eius. Voluptates, accusantium molestiae.</p>
             </div>
 
-            <div class="card">
-                <h1>Planeta Água em Dados</h1>
-                <p>Esse projeto tem como tema a central a Estação Meteorológica Escolar com Arduino.</p>
-            </div>
-            <div class="card">
-                <h1>Planeta Água em Dados</h1>
-                <p>Esse projeto tem como tema a central a Estação Meteorológica Escolar com Arduino.</p>
-            </div>
-            <div class="card">
-                <h1>Planeta Água em Dados</h1>
-                <p>Esse projeto tem como tema a central a Estação Meteorológica Escolar com Arduino.</p>
-            </div>
-            <div class="card">
-                <h1>Planeta Água em Dados</h1>
-                <p>Esse projeto tem como tema a central a Estação Meteorológica Escolar com Arduino.</p>
+            <!-- Coluna de Cards Menores -->
+            <div class="cards-right">
+                <div class="card-small">
+                    <h3>Previsão do tempo</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis cupiditate asperiores reprehenderit, nihil ad in necessitatibus recusandae labore ut consectetur voluptates. At libero placeat voluptate impedit totam perspiciatis velit earum. Ad, delectus, est quia laudantium fuga ratione ab voluptates mollitia tempora dolor dolores eveniet animi blanditiis qui rerum numquam facilis fugiat recusandae laborum iure inventore accusamus. Nisi quam architecto vel.</p>
+                </div>
+                <div class="card-small">
+                    <h3>Temperatura no ano passado</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad repellat ut magni nobis maxime voluptatibus consectetur modi neque pariatur excepturi sint quisquam esse omnis fugit dolor, porro aspernatur exercitationem cum.</p>
+                </div>
+                <div class="card-small">
+                    <h3>Umidade do ar</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium placeat cumque et odio nobis enim earum sapiente. Libero maxime odio, ex dolorum fugiat dolore, adipisci laudantium illo minus blanditiis eligendi.</p>
+                </div>
+                <div class="card-small">
+                    <h3>Índice UV</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, nam laudantium! Natus temporibus vel sit reprehenderit nihil doloremque dolorum quo perferendis cum provident esse rem velit, eum ipsum, aut explicabo!</p>
+                </div>
             </div>
         </section>
     </main>
 
-
-
+    <footer class="footer">
+        <img src="Marca-simplificada/Marca simplificada/5.png" alt="Logo SNCT">
+    </footer>
 
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
